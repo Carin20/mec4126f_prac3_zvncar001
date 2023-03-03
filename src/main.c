@@ -7,6 +7,8 @@
 #define STM32F051												   //COMPULSORY
 #include "stm32f0xx.h"											   //COMPULSORY
 #include "lcd_stm32f0.h"
+#include <stdio.h>
+#include <string.h>
 
 // GLOBAL VARIABLES ----------------------------------------------------------|
 
@@ -33,7 +35,14 @@ void main(void)
 
 	while(1)
 	{
-
+		char str[100];
+		for (uint8_t i=0; i<=my_age.age; i++)
+		{
+			sprintf(str,"%d",i); //change number into string
+			lcd_putstring(str); //display string number of lcd
+			delay(250000); //allow the string number to be view
+			lcd_command(CLEAR); //remove string number and start again
+		}
 	}
 }
 
